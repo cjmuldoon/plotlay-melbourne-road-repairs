@@ -32,7 +32,7 @@ After **Refresh**:
 | Drivers and repairs | Road repairs raised (the top 50) | 50 |
 | Drivers and repairs | Their cost at the rates (indicative) | $1,521,568 |
 
-With **Road type** on all (as it opens), the class chart reads Very low 169, Low 1,247, Medium 4,756, High 1,301, Very high 10; the Shape Map draws the 1,311 High and Very high segments. The table of the 10 highest starts with Intersection of Bowen Crescent and Garton Street (85.3) and ends with Intersection of Epsom Road and Kensington Road (80.1).
+With **Road type** on all (as it opens), the class chart reads Very low 167, Low 1,249, Medium 4,756, High 1,301, Very high 10; the Shape Map draws the 1,311 High and Very high segments. The table of the 10 highest starts with Intersection of Bowen Crescent and Garton Street (85.3) and ends with Intersection of Epsom Road and Kensington Road (80.1).
 
 On **Drivers and repairs**, the segment picked shows condition 93, road type 70, near a school or hospital 76 and surface age 89. The treatment table: 22 reconstructions over 11,031 m² ($1,058,976) and 28 resurfacings over 17,792 m² ($462,592). The sample table lists 24 made-up assets.
 
@@ -67,7 +67,7 @@ Use **Home, Publish**. In the Power BI service, set the semantic model's **Data 
 
 ## What the numbers are
 
-The score is a prioritisation aid with stated weights, not an engineering assessment: condition 50% (the council's rating, 1 failed to 5 good, lower raises the priority), road type 20%, nearness to a school or hospital 15% (0 to 600 m, closer raises the priority), surface age 15%, each rescaled 0 to 100 and averaged with those weights. Move the weights and the order changes; the notebook in `python/` shows by how much. Costs are indicative: typical published council rates, not quotes. The building, roof and gutter inspection is a made-up sample that shows the workflow, not real buildings.
+The score is a prioritisation aid with stated weights, not an engineering assessment: condition 50% (on Plotlay's scale, 1 very good to 5 very poor, higher raises the priority; it is 6 minus the council's rating, 1 failed to 5 good, which `condition_council` keeps), road type 20%, nearness to a school or hospital 15% (0 to 600 m, closer raises the priority), surface age 15%, each rescaled 0 to 100 and averaged with those weights. Move the weights and the order changes; the notebook in `python/` shows by how much. Costs are indicative: typical published council rates, not quotes. The building, roof and gutter inspection is a made-up sample that shows the workflow, not real buildings.
 
 ## Screenshots
 

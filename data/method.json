@@ -1,8 +1,8 @@
 {
  "name": "Road repair priority",
  "as_of": "2026-11-24",
- "computed": "2026-11-24T04:53:00.546Z",
- "method": "Priority score 0 to 100: the weighted mean of Condition 50% (lower values raise the priority, rescaled between 1 and 5); Road type 20% (higher values raise the priority, rescaled between 0 and 100); Near a school or hospital 15% (lower values raise the priority, rescaled between 0 and 600); Surface age 15% (higher values raise the priority, rescaled between its 5th and 95th percentile). Classes: Very low, Low, Medium, High, Very high at breaks 20, 40, 60, 80. Dates counted to 2026-11-24. A prioritisation aid from the criteria and weights stated, not an engineering or condition assessment. Condition ratings are as their publisher or inspector recorded them.",
+ "computed": "2026-11-24T05:57:21.967Z",
+ "method": "Priority score 0 to 100: the weighted mean of Condition 50% (higher values raise the priority, rescaled between 1 and 5); Road type 20% (higher values raise the priority, rescaled between 0 and 100); Near a school or hospital 15% (lower values raise the priority, rescaled between 0 and 600); Surface age 15% (higher values raise the priority, rescaled between its 5th and 95th percentile). Classes: Very low, Low, Medium, High, Very high at breaks 20, 40, 60, 80. Dates counted to 2026-11-24. A prioritisation aid from the criteria and weights stated, not an engineering or condition assessment. Condition ratings are as their publisher or inspector recorded them.",
  "note": "A prioritisation aid from the criteria and weights stated, not an engineering or condition assessment. Condition ratings are as their publisher or inspector recorded them.",
  "classes": {
   "breaks": [
@@ -25,7 +25,7 @@
    "kind": "column",
    "label": "Condition",
    "weight": 50,
-   "higher": "lowers",
+   "higher": "raises",
    "norm": "fixed",
    "missing": "skip",
    "column": "condition",

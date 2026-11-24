@@ -1,10 +1,10 @@
 # Melbourne road repairs: which come first
 
-The City of Melbourne rates the condition of its road carriageway segments from 1 (failed) to 5 (good). Here, its 7,483 rated segments are scored 0 to 100 for repair priority from that published condition, the road type, the distance to a school or hospital and the age of the surface, with the weights stated. The top 50 get a repair each, priced from published council asset plan rates. **Live version, with the cockpit board and the method:** [getplotlay.com/showcase/melbourne-road-repairs](https://www.getplotlay.com/showcase/melbourne-road-repairs/)
+The City of Melbourne rates the condition of its road carriageway segments from 1 (failed) to 5 (good). Here each rating is put on Plotlay's scale, 1 (very good) to 5 (very poor), as 6 minus the council's value, which is kept as `condition_council`. Its 7,483 rated segments are scored 0 to 100 for repair priority from that published condition, the road type, the distance to a school or hospital and the age of the surface, with the weights stated. The top 50 get a repair each, priced from published council asset plan rates. **Live version, with the cockpit board and the method:** [getplotlay.com/showcase/melbourne-road-repairs](https://www.getplotlay.com/showcase/melbourne-road-repairs/)
 
 ![The priority cockpit: the road segments by priority class on a map, the whole area's numbers, places in each class, the top 10 and the drivers of the first one](visuals/cockpit.png)
 
-**Ten segments score 80 or more.** First is the intersection of Bowen Crescent and Garton Street in Carlton North (85.3): condition 1.3, a council major road, a surface 37 years old, 144 m from a school or hospital. Sutton Street in North Melbourne (85.0) and Nicholson Street between Spring Street and Albert Street (82.9) follow. With condition alone, 37 of the top 50 change.
+**Ten segments score 80 or more.** First is the intersection of Bowen Crescent and Garton Street by Princes Park (85.3): condition 4.7 of 5, very poor (the council's 1.3), a council major road, a surface 37 years old, 144 m from a school or hospital. Sutton Street in North Melbourne (85.0) and Nicholson Street between Spring Street and Albert Street (82.9) follow. With condition alone, 37 of the top 50 change.
 
 The 50 repairs come to 22 reconstructions and 28 resurfacings over 28,823 m², A$1.52 million at the rates (A$2.24 million with the estimate's allowances and GST, a range of A$1.95 to 2.87 million). Indicative only.
 
@@ -15,16 +15,17 @@ Everything was made in [Plotlay](https://www.getplotlay.com): data layers of the
 ## Read this first
 
 - **A prioritisation aid with stated weights, not an engineering or condition assessment.** The weights (condition 50, road type 20, a school or hospital near 15, surface age 15) are a choice. Move them and the order changes; the notebook shows by how much.
-- **The condition ratings are the council's**, mostly evaluated on 28 February 2026, as published. Only 88 of 1,424 arterial segments are rated and tram formations are not, so arterial roads are under-represented.
+- **The condition ratings are the council's**, mostly evaluated on 28 February 2026, as published. They run 1 (failed) to 5 (good); here they are on Plotlay's scale, 1 (very good) to 5 (very poor), as 6 minus the council's value, a straight line, and `condition_council` keeps the council's own. Only 45 of the rated segments are arterial roads, so the arterial weight decides little.
 - **Road type** comes from the council's road corridors, joined by the segment's description (7,377 segments) or by the corridor its middle stands in (93); 13 have none and count as council minor.
 - **Costs are indicative**: typical published rates, not quotes. Resurfacing at A$26 a m² and reconstruction at A$96 a m² (Knox City Council's road asset plan, 2019) are mid points of ranges; real costs depend on the site, traffic management and the market.
+- **The drive is simulated** (`data/simulated_drive.csv`): no one drove it and its ratings come from a fixed rule. It shows how a drive moves the queue, not the state of those roads.
 - **The building, roof and gutter inspection is a made-up sample** (`data/sample_inspection.csv`), placed where no such buildings stand. No council publishes these openly. It shows the workflow, not real buildings.
 
 ## What's here
 
 | Folder | What |
 |---|---|
-| [`data/`](data) | `road_segments.csv`: each segment with its condition, road type, surface, dates, area, distance to a school or hospital, surface age, its score, class, rank and the four rescaled drivers. `schools_and_hospitals.csv`: the 87 places. `repairs.csv`: the 50 road repairs and the 12 sample ones, with quantities and costs. `method.json`: the criteria, weights, ranges and classes as Plotlay kept them. `sample_inspection.csv`: the made-up sample. `numbers.json`: every number above. |
+| [`data/`](data) | `road_segments.csv`: each segment with its condition, road type, surface, dates, area, distance to a school or hospital, surface age, its score, class, rank and the four rescaled drivers. `schools_and_hospitals.csv`: the 87 places. `repairs.csv`: the 50 road repairs and the 12 sample ones, with quantities and costs. `method.json`: the criteria, weights, ranges and classes as Plotlay kept them. `sample_inspection.csv`: the made-up sample. `simulated_drive.csv`: the simulated drive as a drive log (time, lat, lon, rating, tags), the form Plotlay's connector reads with `match_drive_ratings`. `numbers.json`: every number above. |
 | [`python/`](python) | A narrated notebook ([`melbourne_road_repairs.ipynb`](python/melbourne_road_repairs.ipynb)) that works the scores out again, checks them against Plotlay's, tries condition alone and sums the repairs |
 | [`powerbi/`](powerbi) | A Power BI Project (`.pbip`): the segments by priority class, the drivers and the repairs. See [`powerbi/OPEN-ME.md`](powerbi/OPEN-ME.md) |
 | [`visuals/`](visuals) | The cockpit board and map pictures, made in Plotlay |
@@ -41,12 +42,20 @@ cd python && ../.venv/bin/jupyter lab melbourne_road_repairs.ipynb
 
 `powerbi/MelbourneRoadRepairs.pbip` opens in Power BI Desktop for Windows and reads `data/` from this repo on GitHub (or from a local copy: change the `DataFolder` parameter). Three pages: **Priority** (the 1,311 High and Very high segments on a Shape Map, the segments in each class and the 10 highest, with a road type slicer), **Drivers and repairs** (the four drivers of a segment picked and averaged by class, the 50 road repairs by treatment at indicative costs, and the made-up sample inspection) and **Every segment** (all 7,483 on Azure Maps). The outlines and a point in each segment are in `data/geometry/` (`road_segments.topojson`, `road_segment_centres.csv`). `powerbi/OPEN-ME.md` says how to open it and which numbers to expect after Refresh.
 
+## Drive and rate
+
+In Plotlay, an inspector in the passenger seat, or rating at stops, taps 1 to 5 as each segment goes by, with tags for potholes, cracking, rutting, edge breaks and ponding. Each tap goes to the segment being driven, along the direction of travel. A review lists old and new ratings, big changes and the segments driven but not rated, and Apply writes them and scores again. A **simulated** drive through Kensington and North Melbourne (4.3 km, 10 minutes, 60 taps, 57 segments rated, 16 driven and not rated) changes 8 of the top 50; the intersection of Epsom Road and Kensington Road, rated 5, moves from 10th to first (88.6).
+
+![Illustration: an inspector in the passenger seat taps a rating on a tablet while the driver watches the road](visuals/field-illustration.jpg)
+
+*Illustration.*
+
 ## How it was made
 
 1. **Road segments**: the council's "Road segments with surface type" (61,424 polygons), the 7,483 road carriageways with a condition rating, each with its road type from the road corridors layer.
 2. **Schools and hospitals**: the Victorian Department of Education's school locations for 2026 in and around the city (76), and the 11 health services in the council's landmarks.
-3. **The score**: each criterion rescaled from 0 to 1 (condition between 1 and 5, lower raises the priority; road type arterial 100, council major 70, council minor 40, private 10; distance between 0 and 600 m, closer raises it; surface age between its 5th and 95th percentile), then the weighted mean, 0 to 100, in five classes of 20.
-4. **Repairs**: one for each of the top 50 by its condition (reconstruction up to 1.75, resurfacing up to 2.5, patching above), counted in m² of the segment and priced from Plotlay's price book.
+3. **The score**: each criterion rescaled from 0 to 1 (condition between 1 and 5 on Plotlay's scale, higher, that is worse, raises the priority; road type arterial 100, council major 70, council minor 40, private 10; distance between 0 and 600 m, closer raises it; surface age between its 5th and 95th percentile), then the weighted mean, 0 to 100, in five classes of 20.
+4. **Repairs**: one for each of the top 50 by its condition (reconstruction at 4.25 or worse, resurfacing at 3.5 or worse, patching for the rest), counted in m² of the segment and priced from Plotlay's price book.
 
 ## Sources and licences
 
