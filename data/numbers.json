@@ -1,0 +1,377 @@
+{
+ "sample": {
+  "assets": 24,
+  "repairs": 12,
+  "package": {
+   "doc": {
+    "id": "est_mwu7y6akp5vwb",
+    "name": "Sample sites: roof and gutter repairs (indicative)"
+   },
+   "repairs": 12,
+   "subtotal": 9471.2,
+   "total": 13969.93,
+   "low": 12685.03,
+   "high": 16269.7,
+   "currency": "AUD",
+   "by_section": [
+    {
+     "name": "Roofing",
+     "total": 9471.2,
+     "labour": 5461.2,
+     "materials": 4010,
+     "hours": 66.6,
+     "lines": 12
+    }
+   ],
+   "disclaimer": "Indicative only. These figures come from typical published prices and estimates for the area, not from quotes: real costs depend on the site, access, the products chosen and the market at the time. Get written quotes from licensed trades before relying on any figure."
+  },
+  "summary": {
+   "assets": 24,
+   "not_rated": 0,
+   "grades": [
+    {
+     "rating": 1,
+     "name": "Very good",
+     "count": 1
+    },
+    {
+     "rating": 2,
+     "name": "Good",
+     "count": 7
+    },
+    {
+     "rating": 3,
+     "name": "Fair",
+     "count": 8
+    },
+    {
+     "rating": 4,
+     "name": "Poor",
+     "count": 5
+    },
+    {
+     "rating": 5,
+     "name": "Very poor",
+     "count": 3
+    }
+   ],
+   "overdue": [
+    {
+     "id": "BLD-001",
+     "name": "Sample site 1: building",
+     "next_due": "2025-09-15"
+    },
+    {
+     "id": "RF-001",
+     "name": "Sample site 1: roof",
+     "next_due": "2025-09-15"
+    },
+    {
+     "id": "GT-001",
+     "name": "Sample site 1: gutter and downpipes",
+     "next_due": "2025-09-15"
+    },
+    {
+     "id": "BLD-002",
+     "name": "Sample site 2: building",
+     "next_due": "2026-09-15"
+    },
+    {
+     "id": "RF-002",
+     "name": "Sample site 2: roof",
+     "next_due": "2026-09-15"
+    },
+    {
+     "id": "GT-002",
+     "name": "Sample site 2: gutter and downpipes",
+     "next_due": "2026-09-15"
+    },
+    {
+     "id": "BLD-004",
+     "name": "Sample site 4: building",
+     "next_due": "2025-04-15"
+    },
+    {
+     "id": "RF-004",
+     "name": "Sample site 4: roof",
+     "next_due": "2025-04-15"
+    },
+    {
+     "id": "GT-004",
+     "name": "Sample site 4: gutter and downpipes",
+     "next_due": "2025-04-15"
+    },
+    {
+     "id": "BLD-007",
+     "name": "Sample site 7: building",
+     "next_due": "2026-04-15"
+    },
+    {
+     "id": "RF-007",
+     "name": "Sample site 7: roof",
+     "next_due": "2026-04-15"
+    },
+    {
+     "id": "GT-007",
+     "name": "Sample site 7: gutter and downpipes",
+     "next_due": "2026-04-15"
+    },
+    {
+     "id": "BLD-008",
+     "name": "Sample site 8: building",
+     "next_due": "2025-12-15"
+    },
+    {
+     "id": "RF-008",
+     "name": "Sample site 8: roof",
+     "next_due": "2025-12-15"
+    },
+    {
+     "id": "GT-008",
+     "name": "Sample site 8: gutter and downpipes",
+     "next_due": "2025-12-15"
+    }
+   ],
+   "defects_open": 12,
+   "defects_repaired": 0,
+   "repairs": {
+    "open": 62,
+    "progress": 0,
+    "done": 0,
+    "cancelled": 0
+   },
+   "cost_open": 1531039.2,
+   "cost_done": 0,
+   "packages": 2,
+   "scale": "Condition 1 (very good) to 5 (very poor), the five-grade style of IPWEA practice notes and NAMS.PLUS asset management plans. A rating records what an inspector saw on the day; it is not an engineering assessment.",
+   "disclaimer": "Indicative only. These figures come from typical published prices and estimates for the area, not from quotes: real costs depend on the site, access, the products chosen and the market at the time. Get written quotes from licensed trades before relying on any figure."
+  },
+  "top": [
+   [
+    "RF-004",
+    "Sample site 4: roof",
+    5,
+    100
+   ],
+   [
+    "GT-001",
+    "Sample site 1: gutter and downpipes",
+    5,
+    93.8
+   ],
+   [
+    "GT-008",
+    "Sample site 8: gutter and downpipes",
+    5,
+    91.8
+   ],
+   [
+    "RF-001",
+    "Sample site 1: roof",
+    4,
+    82.8
+   ],
+   [
+    "RF-007",
+    "Sample site 7: roof",
+    4,
+    78
+   ],
+   [
+    "BLD-004",
+    "Sample site 4: building",
+    4,
+    77
+   ]
+  ]
+ },
+ "segments": 7483,
+ "by_name": 7377,
+ "by_space": 93,
+ "places": 87,
+ "schools": 76,
+ "classes": [
+  {
+   "name": "Very low",
+   "from": 0,
+   "to": 20,
+   "count": 169
+  },
+  {
+   "name": "Low",
+   "from": 20,
+   "to": 40,
+   "count": 1247
+  },
+  {
+   "name": "Medium",
+   "from": 40,
+   "to": 60,
+   "count": 4756
+  },
+  {
+   "name": "High",
+   "from": 60,
+   "to": 80,
+   "count": 1301
+  },
+  {
+   "name": "Very high",
+   "from": 80,
+   "to": 100,
+   "count": 10
+  }
+ ],
+ "top": [
+  {
+   "rank": 1,
+   "key": "RD-5955",
+   "name": "Intersection of Bowen Crescent and Garton Street",
+   "score": 85.3,
+   "class": "Very high"
+  },
+  {
+   "rank": 2,
+   "key": "RD-2229",
+   "name": "Sutton Street between Boundary Road and Western Link Road",
+   "score": 85,
+   "class": "Very high"
+  },
+  {
+   "rank": 3,
+   "key": "RD-4495",
+   "name": "Nicholson Street between Spring Street and Albert Street",
+   "score": 82.9,
+   "class": "Very high"
+  },
+  {
+   "rank": 4,
+   "key": "RD-1360",
+   "name": "Abbotsford Street between Brougham Street and Flemington Road",
+   "score": 82.8,
+   "class": "Very high"
+  },
+  {
+   "rank": 5,
+   "key": "RD-5109",
+   "name": "Intersection of Exhibition Street and Little Lonsdale Street",
+   "score": 82.6,
+   "class": "Very high"
+  },
+  {
+   "rank": 6,
+   "key": "RD-3183",
+   "name": "Wellington Parade between Hoddle Street and Simpson Street",
+   "score": 82.3,
+   "class": "Very high"
+  },
+  {
+   "rank": 6,
+   "key": "RD-5997",
+   "name": "Pitt Street between Canning Street and Rathdowne Street",
+   "score": 82.3,
+   "class": "Very high"
+  },
+  {
+   "rank": 8,
+   "key": "RD-1150",
+   "name": "Wellington Parade between Hoddle Street and Simpson Street",
+   "score": 80.5,
+   "class": "Very high"
+  },
+  {
+   "rank": 9,
+   "key": "RD-1214",
+   "name": "Cathedral Place between Lansdowne Street and Gisborne Street",
+   "score": 80.4,
+   "class": "Very high"
+  },
+  {
+   "rank": 10,
+   "key": "RD-2185",
+   "name": "Intersection of Epsom Road and Kensington Road",
+   "score": 80.1,
+   "class": "Very high"
+  }
+ ],
+ "first": {
+  "layer": "Road segments",
+  "key": "RD-5955",
+  "name": "Intersection of Bowen Crescent and Garton Street",
+  "score": 85.3,
+  "class": "Very high",
+  "rank": 1,
+  "of": 7483,
+  "tied": false,
+  "area_ha": 0.01,
+  "drivers": [
+   {
+    "id": "condition",
+    "label": "Condition",
+    "raw": 1.3,
+    "value": 93,
+    "share": 50,
+    "points": 46.5,
+    "missing": false,
+    "weight": 50
+   },
+   {
+    "id": "road_type",
+    "label": "Road type",
+    "raw": "Council Major",
+    "value": 70,
+    "share": 20,
+    "points": 14,
+    "missing": false,
+    "weight": 20
+   },
+   {
+    "id": "installed_age",
+    "label": "Surface age",
+    "raw": 36.9,
+    "value": 89,
+    "share": 15,
+    "points": 13.4,
+    "missing": false,
+    "weight": 15
+   },
+   {
+    "id": "to_schools_and_hospitals_m",
+    "label": "Near a school or hospital",
+    "raw": 144,
+    "value": 76,
+    "share": 15,
+    "points": 11.4,
+    "missing": false,
+    "weight": 15
+   }
+  ],
+  "method": "Priority score 0 to 100: the weighted mean of Condition 50% (lower values raise the priority, rescaled between 1 and 5); Road type 20% (higher values raise the priority, rescaled between 0 and 100); Near a school or hospital 15% (lower values raise the priority, rescaled between 0 and 600); Surface age 15% (higher values raise the priority, rescaled between its 5th and 95th percentile). Classes: Very low, Low, Medium, High, Very high at breaks 20, 40, 60, 80. Dates counted to 2026-11-24. A prioritisation aid from the criteria and weights stated, not an engineering or condition assessment. Condition ratings are as their publisher or inspector recorded them.",
+  "note": "A prioritisation aid from the criteria and weights stated, not an engineering or condition assessment. Condition ratings are as their publisher or inspector recorded them."
+ },
+ "raised": 50,
+ "skipped": [],
+ "package": {
+  "doc": {
+   "id": "est_mwu7y5r7mmmiw",
+   "name": "Top 50 road repairs (indicative)"
+  },
+  "repairs": 50,
+  "subtotal": 1521568,
+  "total": 2244297.58,
+  "low": 1954050.53,
+  "high": 2867305.34,
+  "currency": "AUD",
+  "by_section": [
+   {
+    "name": "Roads and paths",
+    "total": 1521568,
+    "labour": 0,
+    "materials": 1521568,
+    "hours": 0,
+    "lines": 50
+   }
+  ],
+  "disclaimer": "Indicative only. These figures come from typical published prices and estimates for the area, not from quotes: real costs depend on the site, access, the products chosen and the market at the time. Get written quotes from licensed trades before relying on any figure."
+ }
+}

@@ -1,0 +1,130 @@
+table Repairs
+	lineageTag: 810a4b9e-a5b9-5b18-32b1-ccd997c98236
+
+	/// Repairs raised
+	measure 'Repair count' = COUNTROWS ( Repairs )
+		formatString: #,0
+		lineageTag: 13ea6847-95e3-4aec-a205-1b5783be70ae
+
+	/// Quantity times the price book rate, before the estimate allowances and GST; indicative, not quotes
+	measure 'Repair cost' = SUM ( Repairs[cost] )
+		formatString: $#,0
+		lineageTag: 946af7b4-1af7-e9e9-c3bc-6730d013ac2a
+
+	/// Area of the repairs measured in m²
+	measure 'Repair area m2' = CALCULATE ( SUM ( Repairs[qty] ), KEEPFILTERS ( Repairs[unit] = "m2" ) )
+		formatString: #,0
+		lineageTag: c9050a52-67b4-7208-c0ba-cf3783cf704d
+
+	column ref
+		dataType: string
+		lineageTag: fe6fb444-07f9-f59e-8bc6-e1232cf4e722
+		summarizeBy: none
+		sourceColumn: ref
+
+		annotation SummarizationSetBy = Automatic
+
+	column asset
+		dataType: string
+		lineageTag: 522d7427-d2ad-3100-3976-758cec78d513
+		summarizeBy: none
+		sourceColumn: asset
+
+		annotation SummarizationSetBy = Automatic
+
+	column on
+		dataType: string
+		lineageTag: 6c97fd0d-e8be-3b1a-aad0-198c0d9db3e9
+		summarizeBy: none
+		sourceColumn: on
+
+		annotation SummarizationSetBy = Automatic
+
+	column code
+		dataType: string
+		lineageTag: 863a14e4-9b57-7a16-386c-d08a44a6830f
+		summarizeBy: none
+		sourceColumn: code
+
+		annotation SummarizationSetBy = Automatic
+
+	column qty
+		dataType: double
+		formatString: #,0
+		lineageTag: 4b128f76-4390-2abb-c07e-dec37d2cc858
+		summarizeBy: none
+		sourceColumn: qty
+
+		annotation SummarizationSetBy = Automatic
+
+	column unit
+		dataType: string
+		lineageTag: 93e09f05-db38-7aae-52b7-b2fb8e8944da
+		summarizeBy: none
+		sourceColumn: unit
+
+		annotation SummarizationSetBy = Automatic
+
+	column priority
+		dataType: string
+		lineageTag: d68b4353-5300-1246-ca64-efbb3fbf5492
+		summarizeBy: none
+		sourceColumn: priority
+
+		annotation SummarizationSetBy = Automatic
+
+	column due
+		dataType: string
+		lineageTag: bee3d3ed-7e69-5739-2dee-fd4f565fc7f1
+		summarizeBy: none
+		sourceColumn: due
+
+		annotation SummarizationSetBy = Automatic
+
+	column status
+		dataType: string
+		lineageTag: ffe47115-7c02-8963-6bb3-fee6317f8f4a
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	column cost
+		dataType: double
+		formatString: $#,0
+		lineageTag: 5bfbe3d8-2559-7b66-7a95-4404a3e36344
+		summarizeBy: none
+		sourceColumn: cost
+
+		annotation SummarizationSetBy = Automatic
+
+	column package
+		dataType: string
+		lineageTag: 3570e62a-9274-39f9-7cd7-7b2ce88d39c9
+		summarizeBy: none
+		sourceColumn: package
+
+		annotation SummarizationSetBy = Automatic
+
+	column treatment
+		dataType: string
+		lineageTag: bdc2cb79-4bc6-cda6-9801-b1837aee9b20
+		summarizeBy: none
+		sourceColumn: treatment
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Repairs = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(GetFile("repairs.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Kept = Table.SelectColumns(Promoted, {"ref", "asset", "on", "code", "qty", "unit", "priority", "due", "status", "cost", "package"}),
+				    Typed = Table.TransformColumnTypes(Kept, {{"ref", type text}, {"asset", type text}, {"on", type text}, {"code", type text}, {"qty", type number}, {"unit", type text}, {"priority", type text}, {"due", type text}, {"status", type text}, {"cost", type number}, {"package", type text}}, "en-AU"),
+				    ShortNames_treatment = [#"rd.overlay" = "Resurfacing (overlay)", #"rd.reconstruct" = "Reconstruction", #"rf.gutter" = "Gutter replacement (sample)", #"rp.downpipe" = "Downpipe repair (sample)", #"rp.gutter_clean" = "Gutter clean (sample)", #"rp.roof_repair" = "Roof repair (sample)", #"rp.tile_repair" = "Tile repair (sample)"],
+				    Short_treatment = Table.AddColumn(Typed, "treatment", each Record.FieldOrDefault(ShortNames_treatment, [code], [code]), type text)
+				in
+				    Short_treatment
+
+	annotation PBI_ResultType = Table

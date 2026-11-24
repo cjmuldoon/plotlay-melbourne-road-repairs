@@ -1,0 +1,72 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "652f2981959ee2fb7c27",
+  "position": {
+    "x": 50,
+    "y": 180,
+    "z": 2,
+    "height": 78,
+    "width": 140.390625,
+    "tabOrder": 2
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "■ ",
+                    "textStyle": {
+                      "fontSize": "14pt",
+                      "color": "#d2433a",
+                      "fontFamily": "Segoe UI"
+                    }
+                  },
+                  {
+                    "value": "High",
+                    "textStyle": {
+                      "fontSize": "11pt",
+                      "color": "#1f2a37",
+                      "fontFamily": "Segoe UI"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "■ ",
+                    "textStyle": {
+                      "fontSize": "14pt",
+                      "color": "#8f1d3c",
+                      "fontFamily": "Segoe UI"
+                    }
+                  },
+                  {
+                    "value": "Very high",
+                    "textStyle": {
+                      "fontSize": "11pt",
+                      "color": "#1f2a37",
+                      "fontFamily": "Segoe UI"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "annotations": [
+    {
+      "name": "plotlay.legendFor",
+      "value": "fb4ceda7fb53f4bd0bfc"
+    }
+  ]
+}

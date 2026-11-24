@@ -1,0 +1,97 @@
+{
+ "name": "Road repair priority",
+ "as_of": "2026-11-24",
+ "computed": "2026-11-24T04:53:00.546Z",
+ "method": "Priority score 0 to 100: the weighted mean of Condition 50% (lower values raise the priority, rescaled between 1 and 5); Road type 20% (higher values raise the priority, rescaled between 0 and 100); Near a school or hospital 15% (lower values raise the priority, rescaled between 0 and 600); Surface age 15% (higher values raise the priority, rescaled between its 5th and 95th percentile). Classes: Very low, Low, Medium, High, Very high at breaks 20, 40, 60, 80. Dates counted to 2026-11-24. A prioritisation aid from the criteria and weights stated, not an engineering or condition assessment. Condition ratings are as their publisher or inspector recorded them.",
+ "note": "A prioritisation aid from the criteria and weights stated, not an engineering or condition assessment. Condition ratings are as their publisher or inspector recorded them.",
+ "classes": {
+  "breaks": [
+   20,
+   40,
+   60,
+   80
+  ],
+  "names": [
+   "Very low",
+   "Low",
+   "Medium",
+   "High",
+   "Very high"
+  ]
+ },
+ "criteria": [
+  {
+   "id": "condition",
+   "kind": "column",
+   "label": "Condition",
+   "weight": 50,
+   "higher": "lowers",
+   "norm": "fixed",
+   "missing": "skip",
+   "column": "condition",
+   "lo": 1,
+   "hi": 5,
+   "bounds": {
+    "lo": 1,
+    "hi": 5
+   }
+  },
+  {
+   "id": "road_type",
+   "kind": "category",
+   "label": "Road type",
+   "weight": 20,
+   "higher": "raises",
+   "norm": "fixed",
+   "missing": "skip",
+   "column": "road_type",
+   "map": {
+    "arterial": 100,
+    "council major": 70,
+    "council minor": 40,
+    "private": 10,
+    "lease/reserve": 10,
+    "rail/tram": 70,
+    "road safety act": 40,
+    "not given": 40
+   },
+   "lo": 0,
+   "hi": 100,
+   "bounds": {
+    "lo": 0,
+    "hi": 100
+   }
+  },
+  {
+   "id": "to_schools_and_hospitals_m",
+   "kind": "near",
+   "label": "Near a school or hospital",
+   "weight": 15,
+   "higher": "lowers",
+   "norm": "fixed",
+   "missing": "skip",
+   "source": "Schools and hospitals",
+   "lo": 0,
+   "hi": 600,
+   "bounds": {
+    "lo": 0,
+    "hi": 600
+   }
+  },
+  {
+   "id": "installed_age",
+   "kind": "age",
+   "label": "Surface age",
+   "weight": 15,
+   "higher": "raises",
+   "norm": "percentile",
+   "missing": "skip",
+   "column": "installed",
+   "bounds": {
+    "lo": 3.1,
+    "hi": 40.9
+   }
+  }
+ ],
+ "scenarios": []
+}

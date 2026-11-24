@@ -1,0 +1,204 @@
+table Segments
+	lineageTag: fb9a488a-6fe2-d37f-9a17-651d744997f6
+
+	/// Rated road segments with a priority score
+	measure 'Segments scored' = COUNTROWS ( Segments )
+		formatString: #,0
+		lineageTag: 8e68665b-b6f2-8081-5d35-ec7746f2c974
+
+	/// The middle priority score of the segments shown, 0 to 100
+	measure 'Median score' = MEDIANX ( Segments, Segments[priority_score] )
+		formatString: 0.0
+		lineageTag: 7cc7aacf-4afe-fedc-4c77-fbd2f07d962f
+
+	/// Segments in the High or Very high class (score 60 or more) over all segments shown
+	measure 'Share high or very high' = DIVIDE ( CALCULATE ( COUNTROWS ( Segments ), KEEPFILTERS ( Segments[priority_class] IN { "High", "Very high" } ) ), COUNTROWS ( Segments ) )
+		formatString: 0%
+		lineageTag: 6e6b6294-d1f2-f433-406f-d932a8bf5c23
+
+	/// The highest priority score among the rows (one segment: its score)
+	measure 'Top score' = MAX ( Segments[priority_score] )
+		formatString: 0.0
+		lineageTag: e9af7e04-c577-2cc5-3975-5e049d20dbd6
+
+	/// Rank of the segment picked, 1 = first to repair
+	measure 'Rank shown' = MIN ( Segments[priority_rank] )
+		formatString: 0
+		lineageTag: 76cf84c8-5cf7-9da9-6cc5-631731cf2ff1
+
+	/// High = 1, Very high = 2: the Shape Map colours each segment by its class
+	measure 'Class code' = SWITCH ( SELECTEDVALUE ( Segments[priority_class] ), "High", 1, "Very high", 2 )
+		formatString: 0
+		lineageTag: 2d768b98-6db4-b9fb-7062-8a7e7dbf584d
+
+	column key
+		dataType: string
+		lineageTag: c56778a1-f05f-b0f4-59e9-a85b360fdaae
+		summarizeBy: none
+		sourceColumn: key
+
+		annotation SummarizationSetBy = Automatic
+
+	column name
+		dataType: string
+		lineageTag: 83bcbbdf-a2ec-57c2-2412-c6a087e576a7
+		summarizeBy: none
+		sourceColumn: name
+
+		annotation SummarizationSetBy = Automatic
+
+	column asset_id
+		dataType: string
+		lineageTag: 249b669e-8f88-93a7-5d6c-f41c6a000858
+		summarizeBy: none
+		sourceColumn: asset_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column condition
+		dataType: double
+		formatString: 0.00
+		lineageTag: 9ce66130-3a16-8f99-64f4-255c9a38be13
+		summarizeBy: none
+		sourceColumn: condition
+
+		annotation SummarizationSetBy = Automatic
+
+	column road_type
+		dataType: string
+		lineageTag: de5dd414-5879-7448-8f55-65fc75b96e83
+		summarizeBy: none
+		sourceColumn: road_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column surface
+		dataType: string
+		lineageTag: ae3ba8e4-2691-e151-95bc-f967a4223647
+		summarizeBy: none
+		sourceColumn: surface
+
+		annotation SummarizationSetBy = Automatic
+
+	column area_m2
+		dataType: double
+		formatString: #,0
+		lineageTag: cdf5a4c3-ebee-739a-ed99-7fc03741126a
+		summarizeBy: none
+		sourceColumn: area_m2
+
+		annotation SummarizationSetBy = Automatic
+
+	column to_schools_and_hospitals_m
+		dataType: int64
+		formatString: #,0
+		lineageTag: 4804ab21-5f92-74cb-e9a4-6173f39562bf
+		summarizeBy: none
+		sourceColumn: to_schools_and_hospitals_m
+
+		annotation SummarizationSetBy = Automatic
+
+	column installed_age
+		dataType: double
+		formatString: 0.0
+		lineageTag: df6eb1a2-45e9-c795-d742-104a2f8b787a
+		summarizeBy: none
+		sourceColumn: installed_age
+
+		annotation SummarizationSetBy = Automatic
+
+	column priority_score
+		dataType: double
+		formatString: 0.0
+		lineageTag: 28fc29c1-50b9-a638-ac68-ea1f57d9f3cb
+		summarizeBy: none
+		sourceColumn: priority_score
+
+		annotation SummarizationSetBy = Automatic
+
+	column priority_class
+		dataType: string
+		sortByColumn: class_order
+		lineageTag: 80f8e77d-0ccf-531b-3f58-42fcdceaf5f0
+		summarizeBy: none
+		sourceColumn: priority_class
+
+		annotation SummarizationSetBy = Automatic
+
+	column priority_rank
+		dataType: int64
+		formatString: 0
+		lineageTag: 988e995f-a564-e2e4-416b-bbfe05025d9f
+		summarizeBy: none
+		sourceColumn: priority_rank
+
+		annotation SummarizationSetBy = Automatic
+
+	column driver_condition
+		dataType: int64
+		formatString: 0
+		lineageTag: 2c239e38-3906-f290-17a9-716ab8cb0b55
+		summarizeBy: none
+		sourceColumn: driver_condition
+
+		annotation SummarizationSetBy = Automatic
+
+	column driver_road_type
+		dataType: int64
+		formatString: 0
+		lineageTag: 05b9bef8-8199-d6e8-bcfe-2e94fb2f8b45
+		summarizeBy: none
+		sourceColumn: driver_road_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column driver_to_schools_and_hospitals_m
+		dataType: int64
+		formatString: 0
+		lineageTag: 8d95d5a8-323e-e13b-bc45-d835dddb6a3a
+		summarizeBy: none
+		sourceColumn: driver_to_schools_and_hospitals_m
+
+		annotation SummarizationSetBy = Automatic
+
+	column driver_installed_age
+		dataType: int64
+		formatString: 0
+		lineageTag: da48b21d-c5a5-c3f6-584b-5e96097664e9
+		summarizeBy: none
+		sourceColumn: driver_installed_age
+
+		annotation SummarizationSetBy = Automatic
+
+	column class_order
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: b544cfe4-1bb0-edfd-3de1-5b02ef8cf97c
+		summarizeBy: none
+		sourceColumn: class_order
+
+		annotation SummarizationSetBy = Automatic
+
+	column segment
+		dataType: string
+		lineageTag: 82d6d500-3450-5c6b-7e5a-f0542c7a86e7
+		summarizeBy: none
+		sourceColumn: segment
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Segments = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(GetFile("road_segments.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Kept = Table.SelectColumns(Promoted, {"key", "name", "asset_id", "condition", "road_type", "surface", "area_m2", "to_schools_and_hospitals_m", "installed_age", "priority_score", "priority_class", "priority_rank", "driver_condition", "driver_road_type", "driver_to_schools_and_hospitals_m", "driver_installed_age"}),
+				    Typed = Table.TransformColumnTypes(Kept, {{"key", type text}, {"name", type text}, {"asset_id", type text}, {"condition", type number}, {"road_type", type text}, {"surface", type text}, {"area_m2", type number}, {"to_schools_and_hospitals_m", Int64.Type}, {"installed_age", type number}, {"priority_score", type number}, {"priority_class", type text}, {"priority_rank", Int64.Type}, {"driver_condition", Int64.Type}, {"driver_road_type", Int64.Type}, {"driver_to_schools_and_hospitals_m", Int64.Type}, {"driver_installed_age", Int64.Type}}, "en-AU"),
+				    Col_class_order = Table.AddColumn(Typed, "class_order", each List.PositionOf({ "Very low", "Low", "Medium", "High", "Very high" }, [priority_class]), Int64.Type),
+				    Col_segment = Table.AddColumn(Col_class_order, "segment", each if [name] = null or [name] = "" then [key] else [key] & " " & [name], type text)
+				in
+				    Col_segment
+
+	annotation PBI_ResultType = Table

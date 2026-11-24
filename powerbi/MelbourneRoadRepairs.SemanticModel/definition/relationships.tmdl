@@ -1,0 +1,7 @@
+relationship 0b8b3f0a-3696-8a86-46ea-2963d790370d
+	fromColumn: Drivers.key
+	toColumn: Segments.key
+
+relationship f491f609-eeee-381b-a776-3c64ef28f658
+	fromColumn: Centres.key
+	toColumn: Segments.key

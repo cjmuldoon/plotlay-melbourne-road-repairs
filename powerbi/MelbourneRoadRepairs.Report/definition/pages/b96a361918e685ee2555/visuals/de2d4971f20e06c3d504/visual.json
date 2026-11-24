@@ -1,0 +1,281 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "de2d4971f20e06c3d504",
+  "position": {
+    "x": 980,
+    "y": 450,
+    "z": 1,
+    "height": 560,
+    "width": 900,
+    "tabOrder": 1
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Sample"
+                    }
+                  },
+                  "Property": "id"
+                }
+              },
+              "queryRef": "Sample.id",
+              "nativeQueryRef": "id",
+              "displayName": "Asset"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Sample"
+                    }
+                  },
+                  "Property": "name"
+                }
+              },
+              "queryRef": "Sample.name",
+              "nativeQueryRef": "name",
+              "displayName": "Asset name"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Sample"
+                    }
+                  },
+                  "Property": "condition_grade"
+                }
+              },
+              "queryRef": "Sample.condition_grade",
+              "nativeQueryRef": "condition_grade",
+              "displayName": "Condition"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Sample"
+                    }
+                  },
+                  "Property": "priority_score"
+                }
+              },
+              "queryRef": "Sample.priority_score",
+              "nativeQueryRef": "priority_score",
+              "displayName": "Score"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Sample"
+                    }
+                  },
+                  "Property": "priority_class"
+                }
+              },
+              "queryRef": "Sample.priority_class",
+              "nativeQueryRef": "priority_class",
+              "displayName": "Priority class"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Sample"
+                    }
+                  },
+                  "Property": "next_due"
+                }
+              },
+              "queryRef": "Sample.next_due",
+              "nativeQueryRef": "next_due",
+              "displayName": "Next inspection due"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Sample"
+                  }
+                },
+                "Property": "priority_score"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true,
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Building, roof and gutter inspection: made-up sample data, not real buildings'"
+                }
+              }
+            },
+            "titleWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Segoe UI Semibold'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "91.6D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sample.id"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "359.9D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sample.name"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "110.8D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sample.condition_grade"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "72.5D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sample.priority_score"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "110.8D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sample.priority_class"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "120.4D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sample.next_due"
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "wordWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "wordWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

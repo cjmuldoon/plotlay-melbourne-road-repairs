@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.13.0/schema.json",
+  "name": "80ffc00de31ae334e203",
+  "position": {
+    "x": 40,
+    "y": 1020,
+    "z": 99,
+    "height": 58,
+    "width": 1840,
+    "tabOrder": 99
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Road segments with surface type, road corridors and health services: City of Melbourne Open Data, CC BY 4.0. School locations 2026: Victorian Department of Education, CC BY 4.0. Map context: ABS ASGS 2021 and Vicmap Hydro, CC BY 4.0. Scored in Plotlay (getplotlay.com): a prioritisation aid with stated weights, not an engineering assessment. Costs are indicative, from published council rates. The building, roof and gutter inspection is made-up sample data.",
+                    "textStyle": {
+                      "fontSize": "9pt",
+                      "color": "#5b6573",
+                      "fontFamily": "Segoe UI"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

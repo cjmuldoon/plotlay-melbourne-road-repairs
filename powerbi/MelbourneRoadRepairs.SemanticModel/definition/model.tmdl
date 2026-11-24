@@ -1,0 +1,18 @@
+model Model
+	culture: en-AU
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-AU
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["DataFolder","GetFile","Segments","Drivers","Centres","Repairs","Sample"]
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+ref table Segments
+ref table Drivers
+ref table Centres
+ref table Repairs
+ref table Sample
+
+ref cultureInfo en-AU

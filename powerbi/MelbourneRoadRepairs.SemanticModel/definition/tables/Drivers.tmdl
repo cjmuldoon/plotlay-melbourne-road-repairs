@@ -1,0 +1,62 @@
+table Drivers
+	lineageTag: 8e64a609-e662-1406-6595-e6300aaab281
+
+	/// A driver rescaled 0 to 100 (100 raises the priority most), averaged over the segments shown
+	measure 'Driver value' = AVERAGE ( Drivers[value] )
+		formatString: 0
+		lineageTag: f0ba9ae9-bcc7-8177-d4cc-08815b502593
+
+	column key
+		dataType: string
+		isHidden
+		lineageTag: ca06b379-f18d-712e-5e3a-86af3c49e1bc
+		summarizeBy: none
+		sourceColumn: key
+
+		annotation SummarizationSetBy = Automatic
+
+	column driver
+		dataType: string
+		sortByColumn: driver_order
+		lineageTag: 8a0031cd-4407-855c-e668-434e6b3f7b07
+		summarizeBy: none
+		sourceColumn: driver
+
+		annotation SummarizationSetBy = Automatic
+
+	column driver_order
+		dataType: int64
+		formatString: 0
+		isHidden
+		lineageTag: a830cf66-befd-309c-349f-4f133344e2d3
+		summarizeBy: none
+		sourceColumn: driver_order
+
+		annotation SummarizationSetBy = Automatic
+
+	column value
+		dataType: double
+		formatString: 0
+		lineageTag: 873bd032-bdb2-ada5-d25e-f3cda52ffded
+		summarizeBy: none
+		sourceColumn: value
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Drivers = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(GetFile("road_segments.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Kept = Table.SelectColumns(Promoted, {"key", "driver_condition", "driver_road_type", "driver_to_schools_and_hospitals_m", "driver_installed_age"}),
+				    Typed = Table.TransformColumnTypes(Kept, {{"key", type text}, {"driver_condition", Int64.Type}, {"driver_road_type", Int64.Type}, {"driver_to_schools_and_hospitals_m", Int64.Type}, {"driver_installed_age", Int64.Type}}, "en-AU"),
+				    Long = Table.UnpivotOtherColumns(Typed, {"key"}, "col", "value"),
+				    Named = Table.AddColumn(Long, "driver", each Record.Field([driver_condition = "Condition (50%)", driver_road_type = "Road type (20%)", driver_to_schools_and_hospitals_m = "Near a school or hospital (15%)", driver_installed_age = "Surface age (15%)"], [col]), type text),
+				    Ordered = Table.AddColumn(Named, "driver_order", each List.PositionOf({ "driver_condition", "driver_road_type", "driver_to_schools_and_hospitals_m", "driver_installed_age" }, [col]), Int64.Type),
+				    Picked = Table.SelectColumns(Ordered, {"key", "driver", "driver_order", "value"}),
+				    Out = Table.TransformColumnTypes(Picked, {{"value", type number}})
+				in
+				    Out
+
+	annotation PBI_ResultType = Table
